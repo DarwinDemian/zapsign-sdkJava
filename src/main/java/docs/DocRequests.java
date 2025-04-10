@@ -50,7 +50,7 @@ public class DocRequests extends Request {
     }
 
     public ExtraDocResponse addExtraDoc(String docToken, ExtraDoc extraDoc) throws Exception {
-        return createRequest(extraDoc, "docs/" + docToken + "upload-extra-doc", ExtraDocResponse.class);
+        return createRequest(extraDoc, "docs/" + docToken + "/upload-extra-doc", ExtraDocResponse.class);
     }
 
     public DocResponse detailDoc(String docToken) throws Exception {
