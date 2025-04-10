@@ -15,22 +15,22 @@ public class SignerRequest extends Request {
     }
 
     public Signer detailSigner(String signerToken) throws Exception {
-        return createRequest(null, "signers/" + signerToken, Signer.class);
+        return getRequest("signers/" + signerToken, Signer.class);
     }
 
     public Signer updateSigner(String signerToken, Signer signer) throws Exception {
-        return createRequest(signer, "signers/" + signerToken, Signer.class);
+        return postRequest(signer, "signers/" + signerToken, Signer.class);
     }
 
     public Signer addSigner(String docToken, Signer signer) throws Exception {
-        return createRequest(signer, "docs/" + docToken + "/add-signer", Signer.class);
+        return postRequest(signer, "docs/" + docToken + "/add-signer", Signer.class);
     }
 
     public String deleteSigner(String docToken) throws Exception {
-        return createRequest(null, "signer/" + docToken + "/remove", String.class);
+        return deleteRequest("signer/" + docToken + "/remove", String.class);
     }
 
     public String signInBatch(SignBatch signBatch) throws Exception {
-        return createRequest(signBatch, "sign", String.class);
+        return postRequest(signBatch, "sign", String.class);
     }
 }
