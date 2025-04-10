@@ -21,7 +21,7 @@ public class Request {
                 .toString();
 
         HttpResponse<String> response = payload == null
-                ? delete ? new HttpRequestFactory().getRequest(uri) : new HttpRequestFactory().deleteRequest(uri)
+                ? delete ? new HttpRequestFactory().deleteRequest(uri) : new HttpRequestFactory().getRequest(uri)
                 : new HttpRequestFactory().postRequest(uri, jsonConverter.convertToJson(payload));
 
         return jsonConverter.jsonToType(response.body(), responseType);
