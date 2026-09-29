@@ -3,15 +3,15 @@ package signers;
 import body.signer.SignBatch;
 import body.signer.Signer;
 import request.Request;
-import services.HttpRequestFactory;
-import services.JsonConverter;
-
-import java.net.http.HttpResponse;
 
 public class SignerRequest extends Request {
 
     public SignerRequest(String apiToken) {
         super(apiToken);
+    }
+
+    public SignerRequest(String apiToken, boolean isSandbox) {
+        super(apiToken, isSandbox);
     }
 
     public Signer detailSigner(String signerToken) throws Exception {

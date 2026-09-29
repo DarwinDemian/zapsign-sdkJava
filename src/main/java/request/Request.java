@@ -6,8 +6,8 @@ import services.JsonConverter;
 import java.net.http.HttpResponse;
 
 public class Request {
-    protected final String apiRoute = "https://api.zapsign.com.br/api/v1/";
-    protected final String apiRouteSandbox = "https://sandbox.api.zapsign.com.br/api/v1/";
+    protected final static String apiRoute = "https://api.zapsign.com.br/api/v1/";
+    protected final static String apiRouteSandbox = "https://sandbox.api.zapsign.com.br/api/v1/";
     protected final JsonConverter jsonConverter = new JsonConverter();
     protected String apiToken;
     protected boolean isSandbox = false;
@@ -19,6 +19,14 @@ public class Request {
     public Request(String apiToken, boolean isSandbox) {
         this.apiToken = apiToken;
         this.isSandbox = isSandbox;
+    }
+
+    public static String getApiRoute() {
+        return apiRoute;
+    }
+
+    public static String getApiRouteSandbox() {
+        return apiRouteSandbox;
     }
 
     private <T> T createRequest(Object payload, String endpoint, Class<T> responseType, boolean delete) throws Exception {

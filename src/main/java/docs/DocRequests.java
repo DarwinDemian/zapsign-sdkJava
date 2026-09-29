@@ -71,7 +71,7 @@ public class DocRequests extends Request {
 
     public int placeSignatures(String docToken, RubricaList rubricaList) throws Exception {
         String jsonDoc = new JsonConverter().convertToJson(rubricaList);
-        String uri = apiRoute + "docs/" + docToken + "/place-signatures/?api_token=" + apiToken;
+        String uri = isSandbox ? apiRouteSandbox : apiRoute + "docs/" + docToken + "/place-signatures/?api_token=" + apiToken;
         HttpResponse<String> response = new HttpRequestFactory().postRequest(uri, jsonDoc);
         return response.statusCode();
     }
