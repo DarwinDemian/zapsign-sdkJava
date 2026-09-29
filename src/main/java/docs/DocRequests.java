@@ -17,6 +17,10 @@ public class DocRequests extends Request {
         super(apiToken);
     }
 
+    public DocRequests(String apiToken, boolean isSandbox) {
+        super(apiToken, isSandbox);
+    }
+
     public DocResponse createDocFromUploadPdf(DocFromPdf doc) throws Exception {
         return postRequest(doc, "docs", DocResponse.class);
     }

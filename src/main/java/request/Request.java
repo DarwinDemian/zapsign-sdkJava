@@ -7,16 +7,23 @@ import java.net.http.HttpResponse;
 
 public class Request {
     protected final String apiRoute = "https://api.zapsign.com.br/api/v1/";
+    protected final String apiRouteSandbox = "https://sandbox.api.zapsign.com.br/api/v1/";
     protected final JsonConverter jsonConverter = new JsonConverter();
     protected String apiToken;
+    protected boolean isSandbox = false;
 
     public Request(String apiToken) {
         this.apiToken = apiToken;
     }
 
+    public Request(String apiToken, boolean isSandbox) {
+        this.apiToken = apiToken;
+        this.isSandbox = isSandbox;
+    }
+
     private <T> T createRequest(Object payload, String endpoint, Class<T> responseType, boolean delete) throws Exception {
         String uri = new StringBuilder()
-                .append(apiRoute).append(endpoint).append("/")
+                .append(isSandbox ? apiRouteSandbox : apiRoute).append(endpoint).append("/")
                 .append("?api_token=").append(apiToken)
                 .toString();
 
